@@ -1,5 +1,9 @@
 {{ config(materialized='view') }}
 
+ALTER TABLE schooldata
+RENAME COLUMN "States/
+Union Territories" TO states_union_territories;
+
 SELECT
   states_union_territories AS state,
   SUM("Primary Schools") AS total_primary_schools,
