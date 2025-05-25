@@ -1,4 +1,16 @@
 {{ config(materialized='view') }}
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1
+    FROM information_schema.columns
+    WHERE table_name = 'schooldata'
+      AND column_name = 'States/'
+  ) THEN
+    EXECUTE 'ALTER TABLE schooldata RENAME COLUMN "States/" TO states_union_territories';
+  END IF;
+END
+$$;
 
 SELECT
   states_union_territories AS state,
