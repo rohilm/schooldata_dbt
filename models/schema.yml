@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: public
+    database: vshaladb
+    schema: public
+    tables:
+      - name: schooldata
+        description: "Raw school data ingested via Airbyte"
