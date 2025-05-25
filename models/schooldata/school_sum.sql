@@ -5,9 +5,11 @@ BEGIN
     SELECT 1
     FROM information_schema.columns
     WHERE table_name = 'schooldata'
-      AND column_name = 'States/'
+      AND column_name = "States/
+Union Territories"
   ) THEN
-    EXECUTE 'ALTER TABLE schooldata RENAME COLUMN "States/" TO states_union_territories';
+    EXECUTE 'ALTER TABLE schooldata RENAME COLUMN "States/
+Union Territories" TO states_union_territories';
   END IF;
 END
 $$;
