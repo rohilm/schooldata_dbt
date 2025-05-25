@@ -1,23 +1,4 @@
-{{ config(
-    pre_hook=[
-      """
-      DO $$
-      BEGIN
-        IF EXISTS (
-          SELECT 1
-          FROM information_schema.columns
-          WHERE table_name = 'schooldata'
-            AND column_name = 'States/
-  Union Territories'
-        ) THEN
-          EXECUTE 'ALTER TABLE schooldata RENAME COLUMN "States/
-  Union Territorries" TO states_union_territories';
-        END IF;
-      END;
-      $$;
-      """
-    ]
-) }}
+{{ config(materialized='view') }}
 
 SELECT
   states_union_territories AS state,
