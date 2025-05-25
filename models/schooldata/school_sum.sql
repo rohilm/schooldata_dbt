@@ -1,4 +1,3 @@
--- {{ config(materialized='view')}}
 {{ config(
     materialized='view',
     pre_hook=["ALTER TABLE schooldata RENAME COLUMN \"States/\nUnion Territories\" TO states_union_territories"]
